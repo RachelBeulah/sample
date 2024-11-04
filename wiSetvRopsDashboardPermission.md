@@ -20,7 +20,7 @@
 
 Remove dashboard from the Everyone usergroup
 
-### Steps
+## Steps
 
 1. Login to vROps
 
