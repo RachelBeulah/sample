@@ -6,6 +6,14 @@
   - [List of Changes](#list-of-changes)
   - [Introduction](#introduction)
     - [Purpose](#Scope)
+  - [Automation](#Automation)
+  - [Tasks](#Tasks)
+    - [Collect all reports in Ansible server](#Collect-all-reports-in-Ansible-server)
+    - [Collect only latest reports](#Collect-only-latest-reports)
+    - [Convert to html file](#Convert-to-html-file)
+    - [Copy Reports to Webserver](#Copy-Reports-to-Webserver)
+    - [Host in Webserver](#Host-in-Webserver)
+    - [Backup Reports](#Backup-Reports)
    
 ## List of Changes
 
@@ -24,11 +32,12 @@ Collect all external reports, such as RV Tools, Nessus, Patching, etc., host the
 The following playbook will collect the latest reports from external tools such as RV Tools, Nessus, Patching, etc., onto the Ansible server, convert them to HTML files, rename them without timestamps, copy the latest reports to the web server, change the file permissions, and host them on the web server:
 
 ```markdown
-ansible-playbook externalReportsVrops.yml```
+ansible-playbook externalReportsVrops.yml
+```
 
  - This playbook consists of several tasks that work together to collect and host the reports on the web server, which will be explained in detail below.
 
-## Steps
+## Tasks
 
 ### 1. Collect all reports in Ansible server
 
