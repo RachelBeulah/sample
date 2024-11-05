@@ -8,7 +8,7 @@
     - [Purpose](#Scope)
   - [Automation](#Automation)
   - [Tasks](#Tasks)
-    - [Collect all reports in Ansible server](#Collect-all-reports-in-Ansible-server)
+    - [Collect all reports in Ansible server](#1.-Collect-all-reports-in-Ansible-server)
     - [Collect only latest reports](#Collect-only-latest-reports)
     - [Convert to html file](#Convert-to-html-file)
     - [Copy Reports to Webserver](#Copy-Reports-to-Webserver)
