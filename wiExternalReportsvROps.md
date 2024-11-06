@@ -43,19 +43,19 @@ ansible-playbook externalReportsVrops.yml
 
 - The ```gatherReports.yml``` task will collect externally generated reports (Like RV tools, Nessus, Patching etc..) onto the Ansible server in the path ```/opt/reports/dhcReports```.
 
-  #![image]CollectReport
+  ![image](/workInstructions/images/wiExternalReportsvROps/CollectReport.png)
 
 #### 2. Collect only latest reports
 
  - The ```gatherReports.yml``` task collects reports with timestamps, including older reports, rather than only the latest ones. To address this, the ```collectLatestReport.yml``` task uses a shell script to retrieve only the most recent reports based on timestamp, renames the files to remove timestamps, and copies them to the ```/opt/reports/vROps``` directory.
 
-   #![image]LatestReport
+   ![image](/workInstructions/images/wiExternalReportsvROps/LatestReport.png)
 
 #### 3. Convert to html file
 
  - The ```convertReporttoHtml.yml``` task will check for different file format such as csv, xml, excel and convert them into html file using python script.
 
-    #![image]ConvertHtml
+    ![image](/workInstructions/images/wiExternalReportsvROps/ConvertHtml.png)
 
 #### 4. Copy Reports to Webserver
 
@@ -63,23 +63,23 @@ ansible-playbook externalReportsVrops.yml
  - If any files already exist in the ```/home/next/Reports``` directory, they will be moved to a backup directory ```/home/next/Backup/Backup-<timestamp>``` before copying the latest reports into the directory.
  - Set the permissions of the reports to ```0777``` before hosting them on the web server.
    
-    #![image]Webserver
+    ![image](/workInstructions/images/wiExternalReportsvROps/Webserver.png)
    
-    #![image]ReportWebserver
+    ![image](/workInstructions/images/wiExternalReportsvROps/ReportWebserver.png)
    
-    #![image]BackupWebserver
+    ![image](/workInstructions/images/wiExternalReportsvROps/BackupWebserver.png)
 
 #### 5. Host in Webserver
 
    - The ```hostReportinWebserver.yml``` task will host the reports in the webserver's ```/var/www/html``` directory and restart the Nginx service.
 
-     #![image]hostWebserver
+     ![image](/workInstructions/images/wiExternalReportsvROps/hostWebserver.png)
      
-     #![image]SampleNessusReport
+     ![image](/workInstructions/images/wiExternalReportsvROps/SampleNessusReport.png)
 
 #### 6. Backup Reports
 
 - The ```reportsBackup.yml``` task will create a backup of the reports located in ```/opt/reports/vROps``` and store them in ```/backup/dhc-report/Backup<timestamp>```.
 
-     #![image]backupAnsible
+     ![image](/workInstructions/images/wiExternalReportsvROps/backupAnsible.png)
      
