@@ -7,13 +7,13 @@
   - [Introduction](#introduction)
     - [Purpose](#Scope)
   - [Automation](#Automation)
-  - [Tasks](#Tasks)
-    - [Collect all reports in Ansible server](#Collect-all-reports-in-Ansible-server)
-    - [Collect only latest reports](#Collect-only-latest-reports)
-    - [Convert to html file](#Convert-to-html-file)
-    - [Copy Reports to Webserver](#Copy-Reports-to-Webserver)
-    - [Host in Webserver](#Host-in-Webserver)
-    - [Backup Reports](#Backup-Reports)
+    - [Tasks](#Tasks)
+      - [1. Collect all reports in Ansible server](#Collect-all-reports-in-Ansible-server)
+      - [2. Collect only latest reports](#Collect-only-latest-reports)
+      - [3. Convert to html file](#Convert-to-html-file)
+      - [4. Copy Reports to Webserver](#Copy-Reports-to-Webserver)
+      - [5. Host in Webserver](#Host-in-Webserver)
+      - [6. Backup Reports](#Backup-Reports)
    
 ## List of Changes
 
@@ -37,27 +37,27 @@ ansible-playbook externalReportsVrops.yml
 
  - This playbook consists of several tasks that work together to collect and host the reports on the web server, which will be explained in detail below.
 
-## Tasks
+### Tasks
 
-### 1. Collect all reports in Ansible server
+#### 1. Collect all reports in Ansible server
 
 - The ```gatherReports.yml``` task will collect externally generated reports (Like RV tools, Nessus, Patching etc..) onto the Ansible server in the path ```/opt/reports/dhcReports```.
 
   #![image]
 
-### 2. Collect only latest reports
+#### 2. Collect only latest reports
 
  - The ```gatherReports.yml``` task collects reports with timestamps, including older reports, rather than only the latest ones. To address this, the ```collectLatestReport.yml``` task uses a shell script to retrieve only the most recent reports based on timestamp, renames the files to remove timestamps, and copies them to the ```/opt/reports/vROps``` directory.
 
    #![image]
 
-### 3. Convert to html file
+#### 3. Convert to html file
 
  - The ```convertReporttoHtml.yml``` task will check for different file format such as csv, xml, excel and convert them into html file using python script.
 
     #![image]
 
-### 4. Copy Reports to Webserver
+#### 4. Copy Reports to Webserver
 
  - The ```cpReportstoWebserver.yml``` task will copy the latest reports from ```/opt/reports/vROps``` directory to Webserver ```/home/next/Reports```.
  - If any files already exist in the ```/home/next/Reports``` directory, they will be moved to a backup directory ```/home/next/Backup/Backup-<timestamp>``` before copying the latest reports into the directory.
@@ -66,11 +66,11 @@ ansible-playbook externalReportsVrops.yml
     #![image]Report
     #![image]Backup
 
-### 5. Host in Webserver
+#### 5. Host in Webserver
 
    - The ```hostReportinWebserver.yml``` task will host the reports in the webserver's ```/var/www/html``` directory and restart the Nginx service.
 
-### 6. Backup Reports
+#### 6. Backup Reports
 
 - The ```reportsBackup.yml``` task will create a backup of the reports located in ```/opt/reports/vROps``` and store them in ```/backup/dhc-report/Backup<timestamp>```.
 
