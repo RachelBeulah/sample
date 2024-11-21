@@ -51,10 +51,11 @@ The below playbook will creates scopes in vROps using APIs,
 ```markdown
 ansible-playbook createScope.yml
 ```
-- A scope will be created in vROps to include all vCenters except VCS001 (management), covering potential customer workload vCenters such as VCS002 to VCS014, as well as the NSX-T inventory, including NSX Groups.
-- Two scopes will be created in vROps: one for all vCenters except VCS001 (management), covering potential customer workload vCenters such as VCS002 to VCS014, and another for the NSX-T inventory, which includes NSX Groups.
+- Creating a scope in vROps will include all vCenters except VCS001 (management), covering potential customer workload vCenters such as VCS002 to VCS014, as well as the NSX-T inventory, including NSX Groups.
+- Creating two scopes in vROps: one for all vCenters except VCS001 (management), covering potential customer workload vCenters such as VCS002 to VCS014, and another for the NSX-T inventory, which includes NSX Groups.
 
 ![image](/workInstructions/images/wiStandardReporting/scope.png)
+
 ![image](/workInstructions/images/wiStandardReporting/scope.png)
 
 
@@ -62,8 +63,57 @@ ansible-playbook createScope.yml
 
  Role defines a set of permissions that control user access to specific features and data. Roles determine what actions a user can perform, such as viewing, configuring, or managing resources within vROps.
 
- - A role will be created to provide visibility and access to 'Dashboards' and 'Reports' under 'Visualize,' while excluding areas such as 'Administration' and 'Automation Central.
+ - Creating a role that will provide visibility and access to 'Dashboards' and 'Reports' under 'Visualize,' while excluding areas such as 'Administration' and 'Automation Central.
 
 ![image](/workInstructions/images/wiStandardReporting/role.png)
 
 
+## Creation of Custom groups
+
+Custom groups are user-defined collections of resources (like VMs or hosts) that allow for easier management and monitoring. They enable grouping based on specific criteria or organizational needs, enhancing resource visibility and reporting.
+
+The below playbook will creates a custom group in vROps using API,
+```markdown
+ansible-playbook createCustomGroup.yml
+```
+- Creating custom groups with vCenter tags, like resource pool, cluster, and datacenter, and using them for RBAC in dashboards provides better access control and resource management.
+
+![image](/workInstructions/images/wiStandardReporting/customgroups.png)
+
+
+## Assigning RBAC to a user group/user
+
+Assigning RBAC roles and scopes to a user group/user in vROps for dashboards involves granting specific permissions through roles and defining which dashboards they can access through scopes. This ensures that users or user groups can view or manage specific dashboards based on their assigned roles, maintaining secure and organized access to dashboard data.
+
+The below playbooks will assign permissions to specific user groups/user, including roles and scopes,
+```markdown
+ansible-playbook appendAccesstoUsergrp.yml
+```
+```markdown
+ansible-playbook appendAccesstoUser.yml
+```
+![image](/workInstructions/images/wiStandardReporting/rbacuser.png)
+
+![image](/workInstructions/images/wiStandardReporting/rbacusergrp.png)
+
+
+## Synchronize User group
+
+Synchronizing user groups in the "Authorized Sources" ensures that the user groups from external authentication systems, such as Active Directory, are updated and available in vROps for role-based access control and permissions management.
+
+The below playbooks will synchronizes user groups in the "Authorized Sources" tab using the vROps API,
+```markdown
+ansible-playbook synchronizeUsergroup.yml
+```
+![image](/workInstructions/images/wiStandardReporting/syncusergrp.png)
+
+
+## Update Service Account Password
+
+Updating the service account password for Active Directory, which is used to integrate AD with vROps, involves resetting the password in Active Directory and then updating the credentials in vROps to ensure continued synchronization and authentication.
+
+The below playbooks will update the service account password for active directory using API,
+```markdown
+ansible-playbook updateServiceAccountPassword.yml
+```
+![image](/workInstructions/images/wiStandardReporting/updatepassword.png)
