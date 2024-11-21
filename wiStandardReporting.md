@@ -1,11 +1,20 @@
 # Setting RBAC for Aria Operations Dashboard
 
 ## Table of Contents
-- [Standard Reporting](#Standard-Reporting)
+- [Setting RBAC for Aria Operations Dashboard](#Setting-RBAC-for-Aria-Operations-Dashboard)
   - [Table of Contents](#table-of-contents)
   - [List of Changes](#list-of-changes)
   - [Introduction](#introduction)
-    - [Purpose](#Scope)
+    - [Purpose](#Purpose)
+  - [Integrating with Active Directory](#Integrating-with-Active-Directory)
+  - [Creation of Resource group](#Creation-of-Resource-group)
+  - [Creation-of-Scope](#Creation-of-Scope)
+  - [Creation of Role](#Creation-of-Role)
+  - [Creation of Custom groups](#Creation-of-Custom-groups)
+  - [Assigning RBAC to a user group/user](#Assigning-RBAC-to-a-user-group/user)
+  - [Synchronize User group](#Synchronize-User-group)
+  - [Update Service Account Password](#Update-Service-Account-Password)
+- [Summary](#Summary)
    
 ## List of Changes
 
@@ -117,3 +126,9 @@ The below playbooks will update the service account password for active director
 ansible-playbook updateServiceAccountPassword.yml
 ```
 ![image](/workInstructions/images/wiStandardReporting/updatepassword.png)
+
+
+# Summary
+
+This process integrates Active Directory (AD) with vROps to enable role-based access control (RBAC) for dashboards. It involves creating resource groups, scopes, and roles to manage permissions, followed by assigning RBAC to user groups and synchronizing them with vROps. The goal is to ensure users can only access the dashboards they are authorized for, securing access and simplifying management.
+
