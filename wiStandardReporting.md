@@ -17,8 +17,19 @@
 
 ### Purpose
 
-Configuring RBAC for vROps dashboards involves integrating AD, defining a scope and a role, and assigning them to a specific user group or user, ensuring they can only view or access dashboards linked to their assigned scope and role upon logging into vROps.
+Configuring RBAC for vROps dashboards involves integrating Active Directory, defining a scope and a role, and assigning them to a specific user group or user, ensuring they can only view or access dashboards linked to their assigned scope and role upon logging into vROps.
 
-### Integrating with AD
+## Integrating with Active Directory
 
-Integrating AD with vROps simplifies user management by allowing centralized authentication and role-based access control, enabling users to log in with their credentials while ensuring secure and scalable access.
+Integrating Active Directory with vROps simplifies user management by allowing centralized authentication and role-based access control, enabling users to log in with their credentials while ensuring secure and scalable access.
+
+The below playbook will integrate Active Directory with vROps using API,
+```markdown
+ansible-playbook createScope.yml
+```
+
+![image](/workInstructions/images/wiStandardReporting/ADintegration.png)
+
+
+## Creation of Resource group
+
