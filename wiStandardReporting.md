@@ -63,9 +63,9 @@ ansible-playbook createScope.yml
 - Creating a scope in vROps will include all vCenters except VCS001 (management), covering potential customer workload vCenters such as VCS002 to VCS014, as well as the NSX-T inventory, including NSX Groups.
 - Creating two scopes in vROps: one for all vCenters except VCS001 (management), covering potential customer workload vCenters such as VCS002 to VCS014, and another for the NSX-T inventory, which includes NSX Groups.
 
-![image](/workInstructions/images/wiStandardReporting/scope.png)
+![image](/workInstructions/images/wiStandardReporting/scope-vcenter.png)
 
-![image](/workInstructions/images/wiStandardReporting/scope.png)
+![image](/workInstructions/images/wiStandardReporting/scope-nsxt.png)
 
 
 ## Creation of Role
