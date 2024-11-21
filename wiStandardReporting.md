@@ -1,4 +1,4 @@
-# Standard Reporting
+# Setting RBAC for Aria Operations Dashboard
 
 ## Table of Contents
 - [Standard Reporting](#Standard-Reporting)
@@ -16,3 +16,9 @@
 ## Introduction
 
 ### Purpose
+
+Configuring RBAC for vROps dashboards involves integrating AD, defining a scope and a role, and assigning them to a specific user group or user, ensuring they can only view or access dashboards linked to their assigned scope and role upon logging into vROps.
+
+### Integrating with AD
+
+Integrating AD with vROps simplifies user management by allowing centralized authentication and role-based access control, enabling users to log in with their credentials while ensuring secure and scalable access.
